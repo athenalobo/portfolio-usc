@@ -74,7 +74,7 @@ const RecommendationsSection = () => {
     <section className="py-16 md:py-24 px-4 md:px-6 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-pink-900/20" />
-      
+
       <div className="max-w-6xl mx-auto relative">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-thin mb-4 text-white">
@@ -86,73 +86,131 @@ const RecommendationsSection = () => {
         </div>
 
         {/* Main testimonial card */}
-        <div 
+        <div
           className="relative mb-8"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden h-[400px] md:h-[450px]">
+          <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-6 md:p-8 lg:p-12 shadow-2xl relative overflow-hidden min-h-[400px] md:h-[450px]">
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-pink-500/20 to-transparent rounded-full blur-3xl" />
-            
+
             {/* Quote icon */}
             <div className="absolute top-6 left-6 opacity-20">
               <Quote className="w-12 h-12 text-purple-400" />
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 h-full flex flex-col">
-              {/* Quote content with animation */}
-              <div className="flex-1 mb-8 relative overflow-hidden">
-                <div 
+            {/* Mobile: Flexible layout */}
+            <div className="md:hidden relative z-10 flex flex-col h-full">
+              {/* Quote content */}
+              <div className="flex-1 mb-6 relative">
+                <div
                   key={currentTestimonial}
-                  className="absolute inset-0 flex items-start animate-in fade-in slide-in-from-right-4 duration-700"
+                  className="animate-in fade-in slide-in-from-right-4 duration-700"
                 >
-                  <p className="text-gray-200 leading-relaxed text-lg md:text-xl italic font-light">
+                  <p className="text-gray-200 leading-relaxed text-base italic font-light pt-4">
                     "{testimonials[currentTestimonial].quote}"
                   </p>
                 </div>
               </div>
 
-              {/* Author info with animation */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div 
+              {/* Author info */}
+              <div className="flex flex-col gap-4 mt-auto">
+                <div
                   key={`author-${currentTestimonial}`}
-                  className="flex items-center gap-3 md:gap-4 animate-in fade-in slide-in-from-left-4 duration-700"
+                  className="flex items-center gap-3 animate-in fade-in slide-in-from-left-4 duration-700"
                 >
-                  <div className={`w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r ${testimonials[currentTestimonial].gradient} rounded-full flex items-center justify-center shadow-lg transition-all duration-500`}>
-                    <span className="text-white font-bold text-lg md:text-xl">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${testimonials[currentTestimonial].gradient} rounded-full flex items-center justify-center shadow-lg transition-all duration-500 flex-shrink-0`}>
+                    <span className="text-white font-bold text-sm">
                       {testimonials[currentTestimonial].initials}
                     </span>
                   </div>
-                  <div>
-                    <p className="text-white font-semibold text-lg md:text-xl mb-1">
+                  <div className="min-w-0">
+                    <p className="text-white font-semibold text-base mb-1">
                       {testimonials[currentTestimonial].author}
                     </p>
-                    <p className="text-purple-400 font-medium text-sm md:text-base mb-1">
+                    <p className="text-purple-400 font-medium text-sm mb-1 leading-tight">
                       {testimonials[currentTestimonial].title}
                     </p>
-                    <p className="text-gray-400 text-xs md:text-sm">
+                    <p className="text-gray-400 text-xs">
                       {testimonials[currentTestimonial].company}
                     </p>
                   </div>
                 </div>
 
                 {/* Navigation buttons */}
-                <div className="flex items-center gap-2 md:gap-3 mt-4 sm:mt-0">
-                  <button 
+                <div className="flex items-center gap-2 justify-center">
+                  <button
                     onClick={prevTestimonial}
-                    className="w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                   >
-                    <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-purple-300 transition-colors" />
+                    <ChevronLeft className="w-4 h-4 text-white group-hover:text-purple-300 transition-colors" />
                   </button>
-                  <button 
+                  <button
                     onClick={nextTestimonial}
-                    className="w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                    className="w-10 h-10 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group"
                   >
-                    <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-white group-hover:text-purple-300 transition-colors" />
+                    <ChevronRight className="w-4 h-4 text-white group-hover:text-purple-300 transition-colors" />
                   </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop: Fixed layout */}
+            <div className="hidden md:block">
+              {/* Content - Quote section */}
+              <div className="relative z-10 pt-4 pb-32">
+                <div
+                  key={currentTestimonial}
+                  className="animate-in fade-in slide-in-from-right-4 duration-700"
+                >
+                  <p className="text-gray-200 leading-relaxed text-lg lg:text-xl italic font-light">
+                    "{testimonials[currentTestimonial].quote}"
+                  </p>
+                </div>
+              </div>
+
+              {/* Author info - Fixed position at bottom */}
+              <div className="absolute bottom-8 lg:bottom-12 left-8 lg:left-12 right-8 lg:right-12 z-20">
+                <div className="flex flex-row items-end justify-between gap-4">
+                  <div
+                    key={`author-${currentTestimonial}`}
+                    className="flex items-center gap-4 animate-in fade-in slide-in-from-left-4 duration-700"
+                  >
+                    <div className={`w-14 h-14 lg:w-16 lg:h-16 bg-gradient-to-r ${testimonials[currentTestimonial].gradient} rounded-full flex items-center justify-center shadow-lg transition-all duration-500 flex-shrink-0`}>
+                      <span className="text-white font-bold text-lg lg:text-xl">
+                        {testimonials[currentTestimonial].initials}
+                      </span>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-white font-semibold text-lg lg:text-xl mb-1">
+                        {testimonials[currentTestimonial].author}
+                      </p>
+                      <p className="text-purple-400 font-medium text-base mb-1 leading-tight">
+                        {testimonials[currentTestimonial].title}
+                      </p>
+                      <p className="text-gray-400 text-sm">
+                        {testimonials[currentTestimonial].company}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Navigation buttons - Fixed position */}
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <button
+                      onClick={prevTestimonial}
+                      className="w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                    >
+                      <ChevronLeft className="w-5 h-5 text-white group-hover:text-purple-300 transition-colors" />
+                    </button>
+                    <button
+                      onClick={nextTestimonial}
+                      className="w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+                    >
+                      <ChevronRight className="w-5 h-5 text-white group-hover:text-purple-300 transition-colors" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -167,14 +225,12 @@ const RecommendationsSection = () => {
               onClick={() => goToTestimonial(index)}
               className={`transition-all duration-300 rounded-full ${
                 index === currentTestimonial 
-                  ? 'w-8 h-3 bg-gradient-to-r from-purple-500 to-pink-500' 
+                  ? 'w-8 h-3 bg-gradient-to-r from-purple-500 to-pink-500'
                   : 'w-3 h-3 bg-white/30 hover:bg-white/50 hover:scale-125'
-              }`}
+                }`}
             />
           ))}
         </div>
-
-
       </div>
     </section>
   );

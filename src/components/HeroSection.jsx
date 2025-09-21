@@ -8,7 +8,7 @@ const HeroSection = ({ isLoaded }) => {
         <div className="absolute top-10 md:top-20 left-10 md:left-20 w-40 md:w-72 h-40 md:h-72 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-10 md:bottom-20 right-10 md:right-20 w-48 md:w-96 h-48 md:h-96 bg-gradient-to-r from-blue-600/20 to-cyan-600/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
-
+      
       <div className={`text-center z-10 transition-all duration-2000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-thin mb-4 md:mb-6 tracking-wide">
           <span className="bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
@@ -23,14 +23,15 @@ const HeroSection = ({ isLoaded }) => {
             href="https://github.com/athenalobo"
             target="_blank"
             rel="noopener noreferrer"
+            className="w-full sm:w-auto"
           >
-            <button className="group relative px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/10 transition-all duration-500 hover:scale-105 w-full sm:w-auto">
+            <button className="group relative px-6 md:px-8 py-3 md:py-4 bg-white/5 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/10 transition-all duration-500 hover:scale-105 w-full">
               <span className="flex items-center justify-center gap-2">
                 View Work <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
               </span>
             </button>
           </a>
-
+          
           <a
             href="/AthenaLoboResume.pdf"
             download="Athena_Lobo_Resume.pdf"
@@ -42,7 +43,7 @@ const HeroSection = ({ isLoaded }) => {
           </a>
         </div>
       </div>
-      
+
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
         <div className="flex flex-col items-center gap-2">
